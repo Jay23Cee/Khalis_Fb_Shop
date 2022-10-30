@@ -1,0 +1,36 @@
+Facebook API.
+Goal: Should be able to have a business (Khalis NETSHOP) to be 
+able to get data like post images, Post text, comment images, comments 
+text from a business page.
+
+Require Information from Business.
+Acess Page.
+Post Access
+Images Access
+Comment Acess
+
+
+Require Information from the Users.
+Facebook ID
+Name
+location
+
+
+Get Feed.
+Get Links (Attachment / Images)
+Get Comments (with attachment)
+Get Comments of Comments. (With attachments.)
+
+
+
+
+Facebook will be sending data to
+WAVE APPS? or a Database. That will later send it to wave apps.
+
+Facebook Post will be Display first.
+Selection of that "FEED" will made.
+    -> Selected Feed will display Comments with attachments.
+    **Selection of those Comments will be made**
+        --> The selected attached comment will display all comments below.
+            **This should generate the invoice.**
+            **Users list**
