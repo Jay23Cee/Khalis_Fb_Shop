@@ -2,22 +2,17 @@
 
 package model
 
-
-type ItemInput struct {
-	ProductCode string `json:"productCode"`
-	ProductName string `json:"productName"`
-	Quantity    int    `json:"quantity"`
+type FacebookImage struct {
+	Height *int    `json:"height"`
+	Src    *string `json:"src"`
+	Width  *int    `json:"width"`
 }
 
-type Order struct {
-	ID           int     `json:"id"`
-	CustomerName string  `json:"customerName"`
-	OrderAmount  float64 `json:"orderAmount"`
-	Items        []*Item `json:"items"`
+type FacebookMedia struct {
+	Image *FacebookImage `json:"image"`
 }
 
-type OrderInput struct {
-	CustomerName string       `json:"customerName"`
-	OrderAmount  float64      `json:"orderAmount"`
-	Items        []*ItemInput `json:"items"`
+type FacebookTarget struct {
+	ID  *string `json:"id"`
+	URL *string `json:"url"`
 }

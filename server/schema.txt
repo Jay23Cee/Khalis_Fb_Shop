@@ -1,0 +1,405 @@
+type Order {
+    id: Int!
+    customerName: String!
+    orderAmount: Float!
+    items: [Item!]!
+}
+
+type User{
+    id: Int!
+    username: String!
+    password:String!
+    first_name: String!
+    last_name: String!
+}
+
+type UserAddress{
+    id:Int!
+    user_id: Int!
+    address_line1: String!
+    city:String!
+    postal_code:String!
+    country:String!
+
+}
+
+type admin_type{
+    id:Int!
+    admin_type: String!
+    permission:String!
+    created_at: timestamp!
+    modiefied_at:timestamp!
+}
+
+type adminuser{
+    id:Int!
+    username: String!
+    password: String!
+    first_name:String!
+    last_name:String!
+    type_id:Int!
+    last_login:timestamp
+    created_at:timestamp
+    modified_at:timestamp
+
+
+}
+
+type UserPayment{
+
+    id:Int!
+    user_id:Int!
+    payment_type:String!
+    provider: String!
+    account_no: Int!
+    expiry:Date!
+}
+type Product {
+    id: Int!
+    name:String!
+    desc:String!
+    SKU:String!
+    category_id:Int!
+    inventory_id: Int!
+    price:Float!
+    created_at:timestamp
+    modified_at:timestamp
+    delete_at:timestamp
+}
+
+type ProductCategory{
+     id: Int!
+    name:String!
+    desc:String!
+    created_at:timestamp
+    modified_at:timestamp
+    delete_at:timestamp
+}
+
+type ProductInventory{
+    id: Int!
+    quantity:Int!
+    created_at:timestamp
+    modified_at:timestamp
+    delete_at:timestamp
+}
+
+type input OrderInput {
+    customerName: String!
+    orderAmount: Float!
+    items: [ItemInput!]!
+}
+
+type input ItemInput {
+    productCode: String!
+    productName: String!
+    quantity: Int!
+}
+
+
+type cart_item{
+    id:Int!
+    session_id:Int!
+    product_id:Int!
+    quantity:Int!
+    created_at:String!
+    modiefied_at:String!
+
+}
+
+type shopping_session{
+    int:Int!
+    order_id:Int!
+    product_id:Int!
+    quantity:Int!
+    created_at:String!
+    modified_at:String!
+}
+
+
+type order_items{
+    id:Int!
+    order_id:Int!
+    product_id:Int!
+    quantity:Int!
+    created_at:String!
+    modified_at:String!
+}
+
+
+type order_details{
+    id:Int!
+    user_id:Int!
+    total:Float!
+    payment_id:Float!
+    created_at:String!
+    modified_at:String!
+}
+
+
+
+
+type input User{
+    id: Int!
+    username: String!
+    password:String!
+    first_name: String!
+    last_name: String!
+}
+
+type input UserAddress{
+    id:Int!
+    user_id: Int!
+    address_line1: String!
+    city:String!
+    postal_code:String!
+    country:String!
+
+}
+
+type input admin_type{
+    id:Int!
+    admin_type: String!
+    permission:String!
+    created_at: timestamp!
+    modiefied_at:timestamp!
+}
+
+type input adminuser{
+    id:Int!
+    username: String!
+    password: String!
+    first_name:String!
+    last_name:String!
+    type_id:Int!
+    last_login:timestamp
+    created_at:timestamp
+    modified_at:timestamp
+
+
+}
+
+type input UserPayment{
+
+    id:Int!
+    user_id:Int!
+    payment_type:String!
+    provider: String!
+    account_no: Int!
+    expiry:Date!
+}
+type input Product {
+    id: Int!
+    name:String!
+    desc:String!
+    SKU:String!
+    category_id:Int!
+    inventory_id: Int!
+    price:Float!
+    created_at:timestamp
+    modified_at:timestamp
+    delete_at:timestamp
+}
+
+type input ProductCategory{
+     id: Int!
+    name:String!
+    desc:String!
+    created_at:timestamp
+    modified_at:timestamp
+    delete_at:timestamp
+}
+
+type input ProductInventory{
+    id: Int!
+    quantity:Int!
+    created_at:timestamp
+    modified_at:timestamp
+    delete_at:timestamp
+}
+
+
+
+type input ItemInput {
+    productCode: String!
+    productName: String!
+    quantity: Int!
+}
+
+
+type input cart_item{
+    id:Int!
+    session_id:Int!
+    product_id:Int!
+    quantity:Int!
+    created_at:String!
+    modified_at:String!
+
+}
+
+type input shopping_session{
+    int:Int!
+    order_id:Int!
+    product_id:Int!
+    quantity:Int!
+    created_at:String!
+    modified_at:String!
+}
+
+
+type input order_items{
+    id:Int!
+    order_id:Int!
+    product_id:Int!
+    quantity:Int!
+    created_at:String!
+    modified_at:String!
+}
+
+
+type input order_details{
+    id:Int!
+    user_id:Int!
+    total:Float!
+    payment_id:Float!
+    created_at:String!
+    modified_at:String!
+}
+
+
+
+
+
+
+
+type Mutation {
+    createOrder(input: OrderInput!): Order!
+    updateOrder(orderId: Int!, input: OrderInput!): Order!
+    deleteOrder(orderId: Int!): Boolean!
+
+    createUser(input: UserInput!): User!
+    updateUser(orderId: Int!, input: UserInput!): User!
+    deleteUser(orderId: Int!): Boolean!
+
+    createProduct(input: UserInput!): User!
+    updateProduct(orderId: Int!, input: UserInput!): User!
+    deleteProduct(orderId: Int!): Boolean!
+
+
+
+}
+
+type Query {
+    orders: [Order!]!
+}
+
+
+
+
+
+
+
+
+
+
+
+package graph
+
+// This file will be automatically regenerated based on the schema, any resolver implementations
+// will be copied through when generating and any unknown code will be moved to the end.
+
+import (
+	"context"
+
+	"kns_server/graph/generated"
+	"kns_server/graph/model"
+)
+
+// CreateOrder is the resolver for the createOrder field.
+func (r *mutationResolver) CreateOrder(ctx context.Context, input model.OrderInput) (*model.Order, error) {
+	order := model.Order{
+		CustomerName: input.CustomerName,
+		OrderAmount:  input.OrderAmount,
+		Items:        mapItemsFromInput(input.Items),
+	}
+	err := r.DB.Create(&order).Error
+	if err != nil {
+		return nil, err
+	}
+	return &order, nil
+}
+
+// UpdateOrder is the resolver for the updateOrder field.
+func (r *mutationResolver) UpdateOrder(ctx context.Context, orderID int, input model.OrderInput) (*model.Order, error) {
+	updatedOrder := model.Order{
+		ID:           orderID,
+		CustomerName: input.CustomerName,
+		OrderAmount:  input.OrderAmount,
+		Items:        mapItemsFromInput(input.Items),
+	}
+	err := r.DB.Save(&updatedOrder).Error
+	if err != nil {
+		return nil, err
+	}
+	return &updatedOrder, nil
+}
+
+// DeleteOrder is the resolver for the deleteOrder field.
+
+func (r *mutationResolver) DeleteOrder(ctx context.Context, orderID int) (bool, error) {
+	r.DB.Where("order_id = ?", orderID).Delete(&model.Item{})
+	r.DB.Where("id = ?", orderID).Delete(&model.Order{})
+	return true, nil
+}
+
+// Orders is the resolver for the orders field.
+func (r *queryResolver) Orders(ctx context.Context) ([]*model.Order, error) {
+	var orders []*model.Order
+	// err := r.DB.Preload("Items").Find(&orders).Error
+	err := r.DB.Set("gorm:auto_preload", true).Find(&orders).Error
+	if err != nil {
+		return nil, err
+	}
+	return orders, nil
+}
+
+// Mutation returns generated.MutationResolver implementation.
+func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
+
+// Query returns generated.QueryResolver implementation.
+func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
+
+type mutationResolver struct{ *Resolver }
+type queryResolver struct{ *Resolver }
+
+func mapItemsFromInput(itemsInput []*model.ItemInput) []*model.Item {
+	var items []*model.Item
+	for _, itemInput := range itemsInput {
+		items = append(items, &model.Item{
+			ProductCode: itemInput.ProductCode,
+			ProductName: itemInput.ProductName,
+			Quantity:    itemInput.Quantity,
+		})
+	}
+	return items
+}
+
+// func (r *Query) Facebook(ctx context.Context, id string) (interface{}, error) {
+// 	// call your getFacebookData function and return the result
+// 	result, err := getFacebookData(id)
+// 	if err != nil {
+// 		return nil, errors.New(fmt.Sprintf("error getting data from Facebook: %s", err.Error()))
+// 	}
+// 	return result, nil
+// }
+
+func (r *queryResolver) GetFacebookData(ctx context.Context) (*model.FacebookData, error) {
+	// Call the getFacebookData function to retrieve the data
+	data, err := model.GettingFacebookData()
+	if err != nil {
+		return nil, err
+	}
+
+	// Return the data in the appropriate format
+	return data, nil
+}

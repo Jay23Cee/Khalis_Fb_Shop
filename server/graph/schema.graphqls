@@ -1,35 +1,74 @@
-type Order {
-    id: Int!
-    customerName: String!
-    orderAmount: Float!
-    items: [Item!]!
+type FacebookComment {
+  id: ID
+  createdTime: String
+  message: String
+  from: FacebookUser
+  comments:FacebookComments
 }
 
-type Item {
-    id: Int!
-    productCode: String!
-    productName: String!
-    quantity: Int!
+type FacebookUser {
+  id: ID
+  name: String
 }
 
-input OrderInput {
-    customerName: String!
-    orderAmount: Float!
-    items: [ItemInput!]!
+type FacebookMedia {
+  image: FacebookImage
 }
 
-input ItemInput {
-    productCode: String!
-    productName: String!
-    quantity: Int!
+type FacebookImage {
+  height: Int
+  src: String
+  width: Int
 }
 
-type Mutation {
-    createOrder(input: OrderInput!): Order!
-    updateOrder(orderId: Int!, input: OrderInput!): Order!
-    deleteOrder(orderId: Int!): Boolean!
+type FacebookAttachment {
+  media: FacebookMedia
+  target: FacebookTarget
+  type: String
+  url: String
+}
+
+type FacebookTarget {
+  id: String
+  url: String
+}
+
+type FacebookComments {
+  data: [FacebookComment]
+  paging: FacebookPaging
+
+}
+
+type FacebookPost {
+  id: ID
+  fullPicture: String
+  comments: FacebookComments
+  attachments: [FacebookAttachment]
+}
+
+type FacebookPosts {
+  data: [FacebookPost]
+  paging: FacebookPaging
+}
+
+type FacebookData {
+  id: ID
+  posts: FacebookPosts
+}
+
+type FacebookCursors {
+  before: String
+  after: String
+}
+
+type FacebookPaging {
+  cursors: FacebookCursors
 }
 
 type Query {
-    orders: [Order!]!
+  facebook: FacebookData
+}
+
+schema {
+  query: Query
 }
